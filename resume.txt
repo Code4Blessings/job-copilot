@@ -1,0 +1,82 @@
+ 
+Robin Warden
+Software Engineer | Frontend & API Developer | AI Automation Enthusiast
+Lawrenceville, GA       
+(470) 406-1714     
+Email| LinkedIn | GitHub | Portfolio
+
++Professional Summary
+
+Creative and AI-native Frontend Developer with 3+ years of experience building scalable web and mobile interfaces using React, TypeScript, HTML/CSS, and modern CSS frameworks including Styled Components, Bootstrap, and Tailwind CSS. SME-level React engineer with a strong focus on component reusability, scalable architectures, and responsive design. Former NodeJS API Developer at Saia LTL Freight with hands-on experience integrating micro-frontend principles, mentoring developers, and leading as a Subject Matter Expert. Experienced in GitHub Copilot, ChatGPT, and modern dev workflows. Passionate about delivering performant, modular, and accessible web applications.
+
++Technical Skills 
+ 
+Languages & Frameworks: JavaScript, TypeScript, HTML, CSS, Python, SQL, Node.js, Express.js, React.js, React Native, Flutter
+Architecture: Micro-Frontends (component modularization, team autonomy, scalability), Reusable React Components
+AI Tools: ChatGPT, GitHub Copilot, Midjourney, Leonardo.ai, Dalle-3, Pika Labs
+Testing & Auth: Unit/Integration Testing, Jest, RTL, SuperTest, Authentication, Authorization
+APIs & Data: RESTful APIs, GraphQL, Prisma, Apollo, URQL, Axios, Postgres, SQLite3
+Dev Tools: Git, GitLab, Azure DevOps, Firebase, Docker (familiar), CI/CD pipelines
+UI/UX & CMS: Responsive Design, Accessibility, WordPress, Elementor, Divi, Bootstrap, Tailwind CSS
++Professional Experience
+
+Creative Director & Digital Product Developer | Code4Serenity Coloring Books | August 2024 – Present
+•	Designed modular and reusable React component systems aligned with micro-frontend principles for scalable development.
+•	Built branded creative tools and interactive content experiences using React, CSS, and JavaScript.
+•	Used GitHub Copilot, ChatGPT, and AI storytelling to rapidly develop and debug features across web and multimedia products.
+•	Developed responsive layouts using Bootstrap and Tailwind CSS, ensuring performance and accessibility.
+•	Currently studying LLM engineering and exploring AI integration for dynamic, simulation-based frontend tools.
+
+
+
+
+NodeJS Developer | Saia LTL Freight | May 2021 – February 2025	
+•	Acted as Subject Matter Expert (SME) on key frontend/backend integration projects; collaborated with Agile teams and infrastructure engineers.
+•	Led the development of robust APIs using JavaScript, TypeScript, and NodeJS while ensuring testing coverage with Jest and SuperTest.
+•	Contributed to modular UI systems and component-based design aligning with micro-frontend strategies.
+•	Participated in code reviews, technical planning, and architecture discussions across cross-functional teams.
+•	Supported CI/CD pipelines and collaborated on containerized deployments via Kubernetes and Azure DevOps.
+
+
+UI Developer | Kleos Live | March 2021 – April 2021	
+•	Improved UI/UX and added animations using Flutter for a gaming platform.
+•	Contributed to increased user engagement and app retention.
+•	Tools:  Flutter, Firebase
+
+
+Mobile Developer | Rootsfolio LLC | July 2020 – December 2020	
+•	Developed social features and data management flows in a flutter-based social app
+•	Collaborated with Team Lead and CEO remotely.
+•	Tools: Flutter, Firebase
+ 
+
+Team Lead | Lambda School | January 2020 – July 2020
+•	Mentored 9 students through weekly check-ins, code reviews, and Slack Support.
+•	Led daily standups and delivered mini-lectured on accessibility, testing, and styling. 
+•	Provided code quality feedback and development best practices.
+
+Freelance Designer & Blogger | Code4Blessings | Oct.  2018 – Jan. 2020	
+•	Built and enhanced WordPress sites with Elementor and Divi.
+•	Designed headers, footers, blog components, forms, and responsive grids.
+•	Created custom themes and optimized pages for performance and mobile use.
+
++Web App Projects  
+	
+ 
+Spotify Song Suggester| Feb. 2020
+Backend Engineer 	
+•	Built and documented backend services using Express, REST APIs, and SuperTest.
+•	Collaborated with a team of 7 across UI, frontend, and data science roles.
+ 
+•	Tech: NodeJS, Express, ReactJS, Redux, SuperTest.
+
+Farm Fresh App | Oct. 2019 
+Frontend Developer
+•	Developed user registration and shopping flow using React, Formik, and Hooks
+•	Created UI for a farm-to-table produce delivery system.
+
++Education
+Lambda School | San Francisco, CA (Remote) | August 2019 – July 2020	
+Certificate: Full Stack Web Developer | Programming Coursework: UI, Git, Less, Vanilla JavaScript, React, Redux, Context API, Single-Page Web Apps & Testing, Node, Computer Science, C, and Python
+Colorad¬o Technical University | Colorado Springs, CO | September 2009 – December 2012
+BS Degree: Completed 180 credits towards Accounting Degree
