@@ -1,16 +1,19 @@
+import sys
+import os
+import re
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import gradio as gr
 from crewai import Crew, Agent, Task
+from datetime import datetime
 from textwrap import dedent
 from tools.url_builder import build_job_urls
 from tools.job_scraper import Job_Platform
+from tools.resume_modifier import extract_resume_text, modify_resume_for_job
 from tools.ollama_llm import ask_ollama, system_prompt
-import sys
-import os
 
-# Ensure project root is in the path
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# Function to run the full pipeline: Search Strategist -> Job Finder -> Resume Modifier
 
-# Function to run the full pipeline: Search Strategist -> Job Finder
 def run_job_pipeline(job_title, skills, zip_code, commute_miles, remote_pref):
     # --- Agent 1: Search Strategist ---
     search_strategist = Agent(
@@ -27,7 +30,7 @@ def run_job_pipeline(job_title, skills, zip_code, commute_miles, remote_pref):
 
     strategist_task_description = dedent(f"""
         Based on the following user input:
-        - Job Title: {job_title}
+        - Job Titles: {job_title}
         - Skills: {skills}
         - Zip Code: {zip_code}
         - Commute Radius: {commute_miles} miles
@@ -79,16 +82,48 @@ def run_job_pipeline(job_title, skills, zip_code, commute_miles, remote_pref):
     )
 
     crew2 = Crew(agents=[job_finder], tasks=[job_finder_task], verbose=True)
-    final_output = crew2.kickoff()
+    job_matches = crew2.kickoff()
 
-    return final_output
+    # --- Resume Modifier Phase (loop through matches and save output) ---
+    resume_text = extract_resume_text()
+    modified_output_paths = []
+
+    # Today's date string: MMDDYY
+    today_str = datetime.now().strftime("%m%d%y")
+    for match in job_matches:
+    # If match is a dictionary (preferred format)
+        if isinstance(match, dict):
+            title = match.get("title", "unknown_title")
+            summary = match.get("summary", "")
+        # If match is a tuple (fallback format)
+        elif isinstance(match, tuple) and len(match) >= 2:
+            title, summary = match[:2]
+        else:
+            continue  # Skip this match if structure is unknown
+
+    # Clean job title and date for filename
+    job_title_clean = re.sub(r'\W+', '_', title.lower())
+    today_str = datetime.now().strftime("%m%d%y")
+    output_filename = f"resume_{job_title_clean}_{today_str}.md"
+    output_path = os.path.join("modified_resumes", output_filename)
+
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    modified_resume = modify_resume_for_job(resume_text, summary)
+
+    with open(output_path, "w") as f:
+        f.write(modified_resume)
+
+    modified_output_paths.append(output_path)
+
+
+    return f"Modified resumes saved:\n" + "\n".join(modified_output_paths)
 
 # Gradio interface
 with gr.Blocks() as demo:
     gr.Markdown("## 🤖 Job Copilot – Full AI Job Search")
     gr.Markdown("Enter your job search preferences below:")
 
-    job_title = gr.Textbox(label="Job Title")
+    job_title = gr.Textbox(label="Job Titles (comma-separated)")
     skills = gr.Textbox(label="Skills (comma-separated)")
     zip_code = gr.Textbox(label="Zip Code")
     commute_miles = gr.Slider(0, 100, step=5, label="Max Commute Distance (miles)")
@@ -99,7 +134,7 @@ with gr.Blocks() as demo:
     ], label="Remote Work Preference")
 
     submit_btn = gr.Button("🔍 Run Full Search")
-    output = gr.Textbox(label="Job Finder Results", lines=15)
+    output = gr.Textbox(label="System Output", lines=15)
 
     submit_btn.click(
         fn=run_job_pipeline,

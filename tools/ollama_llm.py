@@ -9,13 +9,12 @@ Your job is to identify relevant job roles and summarize them clearly.
 """
 
 # LLM call with job content and user resume as context
-def ask_ollama(system_prompt, user_prompt, model="llama3.2"):
+def ask_ollama(user_prompt, system=system_prompt, model="llama3.2"):
     response = ollama.chat(
         model=model,
         messages=[
-            {"role": "system", "content": system_prompt},
+            {"role": "system", "content": system},
             {"role": "user", "content": user_prompt}
-        ],
-        temperature=0.2
+        ]
     )
     return response['message']['content']
