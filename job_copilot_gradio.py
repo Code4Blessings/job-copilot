@@ -90,30 +90,27 @@ def run_job_pipeline(job_title, skills, zip_code, commute_miles, remote_pref):
 
     # Today's date string: MMDDYY
     today_str = datetime.now().strftime("%m%d%y")
+
     for match in job_matches:
-    # If match is a dictionary (preferred format)
+        # If match is a dictionary (preferred format)
         if isinstance(match, dict):
-            title = match.get("title", "unknown_title")
+            title_raw = match.get("title") or "generic_job"
             summary = match.get("summary", "")
         # If match is a tuple (fallback format)
         elif isinstance(match, tuple) and len(match) >= 2:
-            title, summary = match[:2]
+            title_raw, summary = match[:2]
         else:
             continue  # Skip this match if structure is unknown
 
-    # Clean job title and date for filename
-    job_title_clean = re.sub(r'\W+', '_', title.lower())
-    today_str = datetime.now().strftime("%m%d%y")
-    output_filename = f"resume_{job_title_clean}_{today_str}.md"
-    output_path = os.path.join("modified_resumes", output_filename)
+        # Clean title for filename
+        job_title_clean = re.sub(r'\W+', '_', title_raw.lower())
+        output_filename = f"resume_{job_title_clean}_{today_str}.md"
+        output_path = os.path.join("modified_resumes", output_filename)
 
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    modified_resume = modify_resume_for_job(resume_text, summary)
-
-    with open(output_path, "w") as f:
-        f.write(modified_resume)
-
-    modified_output_paths.append(output_path)
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        modified_resume = modify_resume_for_job(resume_text, summary)
+        with open(output_path, "w") as f:
+            f.write(modified_resume)
 
 
     return f"Modified resumes saved:\n" + "\n".join(modified_output_paths)
