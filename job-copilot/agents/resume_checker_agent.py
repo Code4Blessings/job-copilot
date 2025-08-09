@@ -1,5 +1,3 @@
-# tools/resume_checker.py
-
 import os
 import re
 from datetime import datetime
